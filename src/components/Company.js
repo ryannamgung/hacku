@@ -45,12 +45,12 @@ const styles = {
 function Company(props) {
   const { classes } = props;
   const bull = <span className={classes.bullet}>•</span>;
-
+  debugger
   return (
     <Card className={classes.card}>
       <CardContent>
         <Typography variant="h5" component="h2">
-          {props.company.business_name}
+        {props.company.name}
         </Typography>
         <Typography color="textSecondary">
           Business ID: {props.company.business_id}
