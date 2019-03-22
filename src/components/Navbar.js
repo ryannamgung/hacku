@@ -39,7 +39,7 @@ function Navbar(props) {
             <HomeIcon className={classes.icon} href="#root"/>
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            Review Dematerializer
+            The Minion Enterprises
           </Typography>
         </Toolbar>
       </AppBar>

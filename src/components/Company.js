@@ -63,7 +63,7 @@ function Company(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to={{pathname:`/company-info`, state: {businessId: props.company.business_id}}} style={{ textDecoration: 'none' }}>
+        <Link to={{pathname:`/company-info`, state: {name: props.company.name, businessId: props.company.business_id}}} style={{ textDecoration: 'none' }}>
           <Button size="small" >Analyze</Button>
         </Link>
       </CardActions>
