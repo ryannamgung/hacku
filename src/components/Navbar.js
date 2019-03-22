@@ -10,6 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import red from '@material-ui/core/colors/red';
 import blue from '@material-ui/core/colors/blue';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 const styles = {
   root: {
@@ -34,7 +35,7 @@ function Navbar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="secondary" aria-label="Menu">
+          <IconButton className={classes.menuButton} color="secondary" aria-label="Menu" href="/home">
             <HomeIcon className={classes.icon} href="#root"/>
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>

@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Companies from './Companies.js';
+import {Link} from "react-router-dom";
 
 const styles = theme => ({
   container: {
@@ -54,10 +56,9 @@ class Searchbar extends React.Component {
       name: '',
       city: '',
       state: '',
-      companies: '',
     };
 
-    this.serverIP = "10.67.28.180:5000";
+    // this.serverIP = "10.67.28.180:5000";
   }
 
 
@@ -76,21 +77,23 @@ class Searchbar extends React.Component {
       });
     }
     console.log(this.state.name)
+    console.log(this.state.city)
+    console.log(this.state.state)
   };
 
-  handleClick = (e) => {
-    let url = {serverIP} + "/" + {this.state.name} + "/" + {this.state.city} + "/" + {this.state.state};
-    fetch(url).then(res => res.json()).then(data => this.setState({companies: data}))
-    debugger
-
-    console.log(this.state.companies)
-
-    e.preventDefault();
-  }
+  //`name=${this.state.name}&city=${this.state.city}&state=${this.state.state}`;
+  // handleClick = (e) => {
+  //   // let url = `10.67.28.180:5000/business`;
+  //   let url = `http://localhost:5000/business`;
+  //
+  //   fetch(url).then(res => res.json()).then(data => this.setState({companies: data}));
+  //   // then(data => this.setState({companies: data}))
+  //   console.log(this.state.companies)
+  //   e.preventDefault();
+  // }
 
   render() {
     const { classes } = this.props;
-    // debugger
     return (
       <div>
       <br/>
@@ -98,12 +101,13 @@ class Searchbar extends React.Component {
 
       <form className={classes.container} noValidate autoComplete="on">
         <TextField
+          required
           id="company-name"
           label="Company Name"
           className={classes.textField}
           value={this.state.name}
           onChange={this.handleChange('name')}
-          helperText="ex. ToysRUs"
+          helperText="Required, ex. Dominion Enterprises"
         />
 
         <TextField
@@ -119,16 +123,26 @@ class Searchbar extends React.Component {
           label="State"
           className={classes.textField}
           onChange={this.handleChange('name')}
-          helperText="ex. Virginia"
+          helperText="ex. VA"
         />
-        <Button variant="outlined" color="primary" className={classes.button} onClick={this.handleClick}>
-          Find Companies
-        </Button>
+          <Button variant="outlined" color="primary" className={classes.button}>
+            <Link to={{pathname:`/companies`, state: {name: this.state.name, city: this.state.city, state: this.state.state}}} style={{ textDecoration: 'none' }}>
+              Search
+            </Link>
+          </Button>
       </form>
       </div>
     );
   }
 }
+// <Link to={{pathname: `/companies`, state: {
+//   companyList: this.state.name
+// }} style={{ textDecoration: 'none' }}>
+// Search
+// </Link>
+
+
+
 
 Searchbar.propTypes = {
   classes: PropTypes.object.isRequired,
